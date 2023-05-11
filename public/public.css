@@ -1,0 +1,12 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    list-style-type:none;
+}
+body{
+    overflow-x: hidden;
+}
+body::-webkit-scrollbar{
+    width: 0;
+}

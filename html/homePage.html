@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS  -->
+    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="../public/public.css">
+    <title></title>
+    <style>
+        .item{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .list{
+            margin-top: 10rem;
+        }
+        .item>div:first-child>img{
+            width: 100%;
+            cursor: pointer;
+        }
+        .item>p{
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 1rem;
+        }
+        .shop{
+            margin-top: 20rem;
+            width: 102vw;
+            height: 58vh;
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .shop>div>img{
+            width: 100%;
+        }
+        .shop p{
+            font-size: 1.6rem;
+            margin-right: 0.5rem;
+            margin-top: 6rem;
+        }
+        .shopBtn{
+            padding: 0.5rem 2rem;
+            border-radius: 1.8rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 6rem;
+        }
+        .font{
+            background-color: #ffffff;
+        }
+        .navbar{
+            background: #3f6f85;
+            padding-top: 100px;
+        }
+        .navItemFont li{
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body style="background: #F5F5F7">
+<div class="mx-auto" style="background-size: cover">
+  <img src="../img/Simply48Sheet.jpg" alt="" style="width: 100%;">
+</div>
+<p style="margin-left: 40rem;margin-top:1rem;font-size: 1.2rem;font-weight: 700">
+    Shop by Brand
+</p>
+<ul class="row d-flex flex-row justify-content-center list"></ul>
+<div class="shop row">
+    <div class="col">
+        <img src="../img/BlackCow_HoneyLimeSlushie_Landscape-scaled.jpg" alt="">
+    </div>
+    <div class="col-7">
+        <p>
+            Buy your favorite drinks and more at Lifted Brewing.com.
+        </p>
+        <button class="shopBtn btn btn-danger" style="background: #000000;color: #ffffff;border: none">
+            SHOP
+        </button>
+    </div>
+</div>
+<div style="width: 100vw;height: 1px;background-color: rgba(255,255,255,.1)"></div>
+<nav class="navbar navbar-expand-sm font row justify-content-end align-items-start">
+    <!-- Links -->
+        <div class="nav-item col-4" style="display: flex;flex-direction: column;align-items: flex-start">
+            <div style="display: flex;flex-direction: column;align-items: center">
+                <div style="margin-bottom: 40px">
+                    <img style="width: 70px;" src="../img/底部文字.png" alt="">
+                </div>
+                <div>
+                    <img style="width: 40px;" src="../img/ins.png" alt="">
+                    <img style="width: 40px;" src="../img/tiktok.png" alt="">
+                </div>
+            </div>
+        </div>
+    <div class="nav-item col-7" style="color: #ffffff;font-weight: 100">
+        <div class="navItemFont col-4" style="display: flex;justify-content:space-between;">
+            <ul>
+                <li style="font-weight: bold">Info</li>
+                <li>Get in touch</li>
+                <li>FAQs</li>
+                <li>Refund Policy</li>
+                <li>Terms of Service</li>
+                <li>Refund policy</li>
+            </ul>
+            <ul>
+                <li style="font-weight: bold">Policies</li>
+                <li>Privacy</li>
+                <li>Terms of Service</li>
+            </ul>
+        </div>
+        <p style="margin-top: 40px">
+            &copy 2022，Lifted Drinks Ltd - registered company no.14147803
+        </p>
+    </div>
+</nav>
+<!--导入的bootstrap4文件，以及jquery文件-->
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!--jq修改dom-->
+<script>
+    $(function(){
+        //ajax请求后台图片数据
+        $.ajax({
+            type: "GET",
+            contentType: "application/json",
+            url: "../php/img.php",
+            // data: "{username:'" + username + "',password:'" + password + "'}",
+            success: function(result) {
+                let data
+                data = [
+                {
+                        id:1,
+                        name: "Hepar",
+                        imgSrc:"../img/water2.png"
+                    },{
+                        id:2,
+                        name: "Coke",
+                        imgSrc:"../img/coca2.png"
+                    },{
+                        id:3,
+                        name: "Monster Energy",
+                        imgSrc:"../img/monster2.png"
+                    },{
+                        id:4,
+                        name: "Lipton",
+                        imgSrc:"../img/lipton2.png"
+                    },
+                ]
+                // try {
+                //     data = JSON.parse(result)
+                // }catch (e) {
+                //
+                // }
+                ajaxImgData(data)
+            }
+        })
+        const ajaxImgData = (data) => {
+            for (let i=0; i<data.length; i++) {
+                $('.list').append(`
+        <li class="p-2 col-2 ">
+        <div class="item">
+            <div>
+            <img src="${data[i].imgSrc}" alt="" onclick="jumpModel(${data[i].id})" style="width: 100%;height: 200px;">
+            </div>
+            <p>
+                ${data[i].name}
+            </p>
+        </div></li>`)
+            }
+        }
+        //font栏跳转
+        $('.nav-item').click(function () {
+            let id = $(this).attr('id')
+            top.location.href = iconData[id].url;
+        })
+    //     shop按钮跳转
+        let shopI = 0;
+        $('.shopBtn').click(function (){
+            shopI++
+            if(shopI < 2){
+                $(this).prepend(`<span class="spinner-border spinner-border-sm"></span>`)
+                let time = setTimeout(function(){
+                    top.location.href = 'https://liftedbrewing.com/'
+                    $('.helpBtn span:first').remove()
+                },1000);
+            }
+        })
+    })
+    //展示页跳转
+    const jumpModel = (id)=>{
+        top.location.href = '3dPage.html';
+        localStorage.setItem('id',id);
+    }
+</script>
+</body>
+</html>

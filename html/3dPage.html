@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap 的 CSS 文件 -->
+    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!-- X3dom -->
+    <link rel='stylesheet' type='text/css' href='../public/x3dom.css'>
+    <link rel="stylesheet" href="../public/public.css">
+    <title></title>
+    <style>
+         /* CSS rule to style the mobile logo */
+         .logo {
+            margin-top: 3px;
+        }
+    
+        .logo h1 {
+            font-family: cocaColaFont; /* You don't need to repeat this for each media query as it is propagated */
+            font-size: 31px;
+            margin: 0;
+            margin-top: -10px;
+            margin-bottom: -15px;
+            float: left;
+            padding-top: 0px;
+            padding-left: 0px;
+            padding-right: 2px;
+        }
+    
+        .logo h2 {
+            font-family: cocaColaFont;
+            font-size: 31px;
+            margin-top: -6px;
+            margin-bottom: -15px;
+            padding-top: 0px;
+            padding-left: 0px;
+            padding-right: 3px;
+            float: left; 
+        }
+        .logo h3 {
+            font-size: 18px;
+            margin-top: 0px;
+            margin-bottom: -5px;
+            padding-top: 0px;
+            padding-left: 0px;
+            float: left;
+        }
+    
+        .logo p {
+            font-size: 7px; 
+            margin-top: 22px; 
+            margin-bottom: 0px;
+            padding-top: 0px;
+            padding-left: 3px;
+        }
+        .main {
+            background: #ebebec;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        .nav-link img{
+            width: 100%;
+        }
+        .main>div:first-child{
+            height: 80%;
+            width: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .model{
+            background: rgba(0, 0, 0, 0);
+            border-radius: 10px;
+        }
+        .main>div:last-child{
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            box-sizing: border-box;
+        }
+         .top {
+             margin: 0;
+             width: 100vw;
+             background-color:#ffffff;
+             padding: 0;
+         }
+        .nav-item{
+            cursor: pointer;
+            border-bottom: 5px solid #ffffff;
+            margin: 0 2rem;
+            padding: 1rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #616161;
+            font-size: 1rem;
+        }
+        .selected{
+            color: #1d1e1f;
+            border-bottom: 5px solid #1d1e1f;
+        }
+        .dropdown-menu{
+            padding:0 0.6rem;
+            margin-top: 0.3rem;
+            border-radius: 0;
+            border: none;
+        }
+        .dropdown-item{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            color:#000000;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin:0.8rem 0;
+            width: 16rem;
+            padding: 0.5rem 0;
+            border-radius:0.4rem;
+        }
+        .dropdown-item>div{
+            width: 4rem;
+            display: flex;
+            justify-content: center;
+        }
+        .dropdown-item div>img{
+            width: 100%;
+        }
+        .dropdown-item:nth-child(2)>div{
+            margin: 0.6rem 0;
+        }
+        .btn-default{
+            background-color: #000000;
+            color: #ffffff;
+            font-weight: 900;
+            height: 40px;
+            border-radius: 20px;
+            border: none;
+            margin-left: 20px;
+        }
+        .btn-default:hover{
+            background-color: #000000;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<!--Navigation Bar-->
+<nav class="navbar sticky-top navbar-expand-sm navbar_coca_cola">
+    <div class="container-fluid">  
+      <!-- Brand -->
+      <div class="logo">
+        <a class="navbar-brand" href="#">
+        <h1>D</h1>
+        <h1>rink</h1>
+        <h2>Journey</h2>
+        <p>Refreshing the world, one story at a time</p>
+        </a>
+      </div>
+
+    <!-- Links -->
+    <!--  Navigation Options-->
+    <ul class="navbar-nav col-8 topFont">
+        <li class="nav-item col-1" id="home">
+            Hompage
+        </li>
+        <!-- Dropdown -->
+        <li class="nav-item dropdown col-1 nav-link dropdown-toggle selected" data-toggle="dropdown">
+            Products
+            <div class="dropdown-menu dropdown-menu-left">
+            </div>
+        </li>
+        <li class="nav-item col-1" data-toggle="modal" data-target="#myModal">
+            Contacts
+        </li>
+    </ul>
+</nav>
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Get your help</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- body -->
+            <div class="modal-body">
+                Please tell us some specific information, we will provide you with appropriate solutions, you can leave a message on our page.<br>
+            </div>
+
+            <!-- footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary helpBtn" data-dismiss="modal">Click for help</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="main">
+    <div id="3d">
+        <x3d class="model" id="1" width='60vw' height='80vh'>
+            <scene>
+                <inline nameSpaceName="model" mapDEFToID="true" onclick="animateModel()" id="3d_url" url="../model/Apple AirPods Pro/AirPods.x3d">
+                </inline>
+            </scene>
+        </x3d>
+        <x3d class="model" id="2" width='60vw' height='80vh'>
+            <scene>
+                <inline nameSpaceName="model" mapDEFToID="true" onclick="animateModel()" id="3d_url" url="../model/Apple MacBook Air M2 2022/MacBook.x3d">
+                </inline>
+            </scene>
+        </x3d>
+        <x3d class="model" id="3" width='60vw' height='80vh'>
+            <scene>
+                <inline nameSpaceName="model" mapDEFToID="true" onclick="animateModel()" id="3d_url" url="../model/Apple Watch Series 6/Apple Watch.x3d">
+                </inline>
+            </scene>
+        </x3d>
+        <x3d class="model" id="4" width='60vw' height='80vh'>
+            <scene>
+                <inline nameSpaceName="model" mapDEFToID="true" onclick="animateModel()" id="3d_url" url="../model/Iphone 14 Pro Max/iPhone.x3d">
+                </inline>
+            </scene>
+        </x3d>
+    </div>
+    <div>
+        <div class="propaganda">
+        </div>
+        <div class="row" style="width: 100%;">
+            <button class="btn btn-default col" onclick="cameraTop()">up</button>
+            <button class="btn btn-default col" onclick="cameraBottom()">down</button>
+            <button class="btn btn-default col" onclick="cameraLeft()">left</button>
+            <button class="btn btn-default col" onclick="cameraRight()">right</button>
+        </div>
+    </div>
+</div>
+
+<!--导入的bootstrap4文件，以及jquery文件-->
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src='js/x3dom.js'></script>
+<script src="js/custom.js" crossorigin="anonymous"></script>
+
+<script src="js/swap_restyle.js"></script>
+
+<script src="js/gallery_generator.js"></script>
+<script src="js/getJsonData.js"></script>
+<script src="js/modelInteractions.js"></script>
+<script src="js/jquery.fancybox.min.js"></script>
+<script src="js/x3dom.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+
+        //ajax请求后台模型数据
+            $.ajax({
+                type: "GET",
+                contentType: "application/json",
+                url: "../php/index.php",
+                // data: "{username:'" + username + "',password:'" + password + "'}",
+                success: function(result) {
+                    let data
+                    data = [
+                        {   
+                            id:1,
+                            name: "Hepar",
+                            modelSrc:"../model/Apple Watch Series 6/Apple Watch.x3d",
+                            titleSmall:"Highly Mineral",
+                            titleBig:"Sourced from Vosges,</br>Very close to the Vittel source",
+                            text:"Sourced from Vosges, very close to the Vittel source, Hepar is a popular French water"
+                            
+                        },{
+                            id:2,
+                            name: "Coke",
+                            modelSrc:"../model/Apple MacBook Air M2 2022/MacBook.x3d",
+                            titleSmall:"Born Ready",
+                            titleBig:"Our Iconic,</br>More Refreshing Cola",
+                            text:"History was made 40 years ago with the creation of Coke. "
+                        },{
+                             id:3,
+                            name: "Monster Energy",
+                            modelSrc:"../model/Iphone 14 Pro Max/iPhone.x3d",
+                            titleSmall:"Unleash the Beast!",
+                            titleBig:"Great tast, </br>Choose your favorite.",
+                            text:"It's the ideal combo of the right ingredients in the right proportion to deliver the big bad buzz that only Monster can."
+                        },{
+                            id:4,
+                            name: "Lipton",
+                            modelSrc:"../model/Apple AirPods Pro/AirPods.x3d",
+                            titleSmall:"Savour the Unexpected",
+                            titleBig:"Simple, </br>Unique flavour.",
+                            text:"Lipton iced tea is the perfect addition for any of your meals because of its crisp and refreshing taste. "
+                           
+                        },
+                    ]
+                    // try {
+                    //     data = JSON.parse(result)
+                    // }catch (e) {
+                    //
+                    // }
+                    ajaxModelData(data)
+                }
+            })
+        //渲染模型
+        const ajaxModelData = (data) =>{
+            // //获取url传递的id
+            // let url = window.location.href;
+            // function getCaption (obj) {
+            //     const index = obj.lastIndexOf("?")
+            //     return obj.substring(index, obj.length)
+            // }
+            // let model_id = Number(getCaption(url).slice(4));
+            // console.log(data[model_id-1].modelSrc)
+            let model_id = localStorage.getItem('id')
+            $('.model').css('display','none')
+            $(`#${model_id}`).css('display','block')
+            // $('#3d_url').src = data[model_id-1].modelSrc
+            $('.propaganda').append(`<p style="font-size: 24px;font-weight: 700">
+                ${data[model_id-1].titleSmall}
+            </p>
+            <p style="font-size: 64px;font-weight: 900">
+                ${data[model_id-1].titleBig}
+            </p>
+            <p style="font-size: 24px;font-weight: 700;width: 20vw;">
+                ${data[model_id-1].text}
+            </p>`)
+        }
+        //ajax请求后台图片数据
+        $.ajax({
+            type: "GET",
+            contentType: "application/json",
+            url: "../php/img.php",
+            // data: "{username:'" + username + "',password:'" + password + "'}",
+            success: function(result) {
+                let data
+                data = [
+                    {
+                        id:1,
+                        name: "Hepar",
+                        imgSrc:"../img/water.png"
+                    },{
+                        id:2,
+                        name: "Coke",
+                        imgSrc:"../img/coca.png"
+                    },{
+                        id:3,
+                        name: "Monster Energy",
+                        imgSrc:"../img/monster.png"
+                    },{
+                        id:4,
+                        name: "Lipton",
+                        imgSrc:"../img/lipton.png"
+                    },
+                ]
+                // try {
+                //     data = JSON.parse(result)
+                // }catch (e) {
+                //
+                // }
+                ajaxImgData(data)
+            }
+        })
+        //渲染图片列表
+        const ajaxImgData = (data)=>{
+            for (let i=0; i<data.length; i++){
+                $('.dropdown-menu').append(`
+        <div class="dropdown-item" id="${data[i].id}" onclick="jumpModel(${data[i].id})">
+                    <p>
+                    ${data[i].name}
+                    </p>
+                    <div>
+                        <img src="${data[i].imgSrc}" alt="">
+                    </div>
+                </div>`)
+            }
+        }
+        // Nav jump
+        $('.nav-item').click(function(e) {
+            $('.nav-item').removeClass('selected')
+            $(this).addClass('selected');
+        })
+        //Home jump
+        $('#home').click(function(e) {
+            window.location.href='index.html'
+        })
+        //     help jump
+        let shopI = 0;
+        $('.helpBtn').click(function (){
+            shopI++
+            if(shopI < 2){
+                $(this).prepend(`<span class="spinner-border spinner-border-sm"></span>`)
+                let time = setTimeout(function(){
+                    top.location.href = 'https://getsupport.apple.com/?caller=support.header&cid=gn-ols-contact-mgs_lp-get_help-02132023'
+                },1000);
+            }
+            clearTimeout(time);
+        })
+        
+        $('.dropdown-item').click(function(){
+            let id = $(this).attr('id');
+            window.top.location.href = '3dPage.html?id='+id;
+        })
+    })
+//     Buttons
+    function cameraLeft()
+    {
+        document.getElementById('model__CameraLeft').setAttribute('bind', 'true');
+    }
+
+    function cameraRight()
+    {
+        document.getElementById('model__CameraRight').setAttribute('bind', 'true');
+    }
+
+    function cameraTop()
+    {
+        document.getElementById('model__CameraTop').setAttribute('bind', 'true');
+    }
+
+    function cameraBottom()
+    {
+        document.getElementById('model__CameraBottom').setAttribute('bind', 'true');
+    }
+    function animateModel()
+    {
+        if(document.getElementById('model__RotationTimer').getAttribute('enabled')!= 'true')
+            document.getElementById('model__RotationTimer').setAttribute('enabled', 'true');
+        else
+            document.getElementById('model__RotationTimer').setAttribute('enabled', 'false');
+    }
+    
+    const jumpModel = (id)=>{
+        window.location.href = './3dPage.html';
+        localStorage.setItem('id',id);
+    }
+</script>
+</body>
+</html>

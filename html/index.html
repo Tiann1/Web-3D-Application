@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- 必须的 meta 标签 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap 的 CSS 文件 -->
+    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="../public/public.css">
+    <title>Your Drinks</title>
+    <style>
+        /* Method to declare your own fonts */
+@font-face {
+    font-family: cocaColaFont;
+    src: url(../assets/fonts/LOKICOLA.TTF);
+}
+
+@font-face {
+    font-family: OpenSans;
+    src: url(../assets/fonts/OpenSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: Oswald;
+    src: url(../assets/fonts/Oswald-Regular.ttf);
+}
+        .top {
+            margin: 0;
+            width: 100vw;
+            background-color:#ffffff;
+            padding: 0;
+        }
+        .nav-item{
+            cursor: pointer;
+            border-bottom: 5px solid #ffffff;
+            margin: 0 2rem;
+            padding: 1rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #616161;
+            font-size: 1rem;
+        }
+        .selected{
+            color: #1d1e1f;
+            border-bottom: 5px solid #1d1e1f;
+        }
+        .dropdown-menu{
+            padding:0 0.6rem;
+            margin-top: 0.3rem;
+            border-radius: 0;
+            border: none;
+        }
+        .dropdown-item{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            color:#000000;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin:0.8rem 0;
+            width: 16rem;
+            padding: 0.5rem 0;
+            border-radius:0.4rem;
+        }
+        .dropdown-item>div{
+            width: 4rem;
+            display: flex;
+            justify-content: center;
+        }
+        .dropdown-item div>img{
+            width: 100%;
+        }
+        .dropdown-item:nth-child(2)>div{
+            margin: 0.6rem 0;
+        }
+        .page{
+            display: block;
+            height: 100vh;
+            border: none;
+        }
+         /* CSS rule to style the mobile logo */
+         .logo {
+            margin-top: 3px;
+        }
+    
+        .logo h1 {
+            font-family: cocaColaFont; /* You don't need to repeat this for each media query as it is propagated */
+            font-size: 31px;
+            margin: 0;
+            margin-top: -10px;
+            margin-bottom: -15px;
+            float: left;
+            padding-top: 0px;
+            padding-left: 0px;
+            padding-right: 2px;
+        }
+    
+        .logo h2 {
+            font-family: cocaColaFont;
+            font-size: 31px;
+            margin-top: -6px;
+            margin-bottom: -15px;
+            padding-top: 0px;
+            padding-left: 0px;
+            padding-right: 3px;
+            float: left; 
+        }
+        .logo h3 {
+            font-size: 18px;
+            margin-top: 0px;
+            margin-bottom: -5px;
+            padding-top: 0px;
+            padding-left: 0px;
+            float: left;
+        }
+    
+        .logo p {
+            font-size: 7px; 
+            margin-top: 22px; 
+            margin-bottom: 0px;
+            padding-top: 0px;
+            padding-left: 3px;
+        }
+    </style>
+</head>
+<body>
+
+<!--  Navigation Bar-->
+<nav class="navbar sticky-top navbar-expand-sm navbar_coca_cola">
+    <div class="container">  
+      <!-- Brand -->
+      <div class="logo">
+        <a class="navbar-brand" href="#">
+        <h1>D</h1>
+        <h1>rinks</h1>
+        <h2>Journey</h2>
+        <p>Refreshing the world, one story at a time</p>
+        </a>
+      </div>
+
+    <!-- Links -->
+<!--   Options-->
+    <ul class="navbar-nav col-8 topFont">
+        <li class="nav-item col-1 selected" id="home">
+            Homepage
+        </li>
+        <!-- Dropdown -->
+        <li class="nav-item dropdown col-1 nav-link dropdown-toggle" data-toggle="dropdown">
+                Products
+            <div class="dropdown-menu dropdown-menu-left">
+            </div>
+        </li>
+        <li class="nav-item col-1" data-toggle="modal" data-target="#myModal">
+            Contacts
+        </li>
+    </ul>
+</nav>
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Get your help</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+                Please tell us some specific information, we will provide you with appropriate solutions, you can leave a message on our page<br>
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary helpBtn" data-dismiss="modal">Click for help</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--页面组件-->
+<iframe class="page home" width="100%" src="homePage.html" style=""></iframe>
+<!--导入的bootstrap4文件，以及jquery文件-->
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!--jq修改dom-->
+<script>
+    $(function() {
+        // 导航栏跳转
+        $('.nav-item').click(function(e) {
+            $('.nav-item').removeClass('selected')
+            $(this).addClass('selected');
+        })
+        //首页跳转
+        $('#home').click(function(e) {
+            window.location.href = './index.html'
+        })
+        // //ajax请求后台图片数据
+        // $.ajax({
+        //     type: "GET",
+        //     contentType: "application/json",
+        //     url: "php/img.php",
+        //     // data: "{username:'" + username + "',password:'" + password + "'}",
+        //     success: function(result) {
+        //
+        //         // try {
+        //         //     data = JSON.parse(result)
+        //         // }catch (e) {
+        //         //
+        //         // }
+        //
+        //     }
+        // })
+        let data
+        data = [
+            {
+                id:1,
+                name: "Hepar",
+                imgSrc:"../img/water.png"
+            },{
+                id:2,
+                name: "Coke",
+                imgSrc:"../img/coca.png"
+            },{
+                id:3,
+                name: "Monster Energy",
+                imgSrc:"../img/monster.png"
+            },{
+                id:4,
+                name: "Lipton",
+                imgSrc:"../img/lipton.png"
+            },
+        ]
+        const ajaxImgData = (data)=>{
+            for (let i=0; i<data.length; i++){
+                console.log(1)
+                $('.dropdown-menu').append(`
+        <div class="dropdown-item" id="${data[i].id}" onclick="jumpModel(${data[i].id})">
+                    <p>
+                    ${data[i].name}
+                    </p>
+                    <div>
+                        <img src="${data[i].imgSrc}" alt="">
+                    </div>
+                </div>`)
+            }
+        }
+        ajaxImgData(data)
+        //     help按钮跳转
+        let shopI = 0;
+        $('.helpBtn').click(function (){
+            shopI++
+            if(shopI < 2){
+                $(this).prepend(`<span class="spinner-border spinner-border-sm"></span>`)
+                let time = setTimeout(function(){
+                    top.location.href = 'https://liftedbrewing.com/pages/get-in-touch'
+                    $('.helpBtn span:first').remove()
+                },1000);
+            }
+        })
+    })
+    //展示页跳转
+    const jumpModel = (id)=>{
+        window.location.href = './3dPage.html?id='+id;
+        localStorage.setItem('id',id);
+    }
+</script>
+</body>
+</html>
